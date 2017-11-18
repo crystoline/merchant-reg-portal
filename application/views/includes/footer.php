@@ -20,6 +20,8 @@
 
     <!-- Bootstrap Notify Plugin Js -->
     <script src="<?php echo base_url()?>plugins/bootstrap-notify/bootstrap-notify.js"></script>
+<!-- Bootstrap Tags Input Plugin Js -->
+    <script src="<?php echo base_url()?>plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
 
     <!-- Jquery CountTo Plugin Js -->
     <script src="<?php echo base_url()?>plugins/jquery-countto/jquery.countTo.js"></script>

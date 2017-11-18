@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2017 at 11:16 AM
+-- Generation Time: Nov 18, 2017 at 06:30 PM
 -- Server version: 5.5.53
 -- PHP Version: 7.0.9
 
@@ -133,16 +133,18 @@ CREATE TABLE `merchants` (
   `user_id` int(11) NOT NULL,
   `date_validated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `validated_user` int(9) NOT NULL,
-  `reason` text
+  `reason` text,
+  `documents` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `merchants`
 --
 
-INSERT INTO `merchants` (`id`, `company_name`, `rc_no`, `type_of_ownership`, `date_reg`, `office_phone`, `staff_strength`, `cus_serv_phone`, `office_email`, `office_address`, `postal_address`, `name_of_p_cont_pers`, `email_of_p_cont_pers`, `des_of_p_cont_pers`, `phone_of_p_cont_pers`, `name_of_s_cont_pers`, `des_of_s_cont_pers`, `email_of_s_cont_pers`, `phone_of_s_cont_pers`, `website_name`, `website_url`, `desc_prod`, `cust_pre_reg`, `if_cust_pre_reg`, `trans_vol_per_day`, `no_of_days_for_delev`, `method_of_deliv`, `merchant_bank`, `account_name`, `account_no`, `account_type`, `bank_branch`, `additional_information`, `date_of_reg`, `date_updated`, `merchant_status`, `user_id`, `date_validated`, `validated_user`, `reason`) VALUES
-(1, 'NetronIT', '261661', 0, '2017-08-01', '', 25, '', '', '', '				</div>\r\n				<label class="error"></label>\r\n			</div>\r\n		</div>\r\n		<div class="col-sm-3">\r\n			<div class="form-group">\r\n				<label for="phone_of_p_cont_pers">Contact Person''s Telephone</label>\r\n				<div class="form-line ">\r\n					<input class="form-control" type="text" name="phone_of_p_cont_pers" id="phone_of_p_cont_pers"\r\n					       value="">\r\n				</div>\r\n				<label class="error"></label>\r\n			</div>\r\n		</div>\r\n	</div>\r\n	<div class="row">\r\n		<div class="col-sm-3">\r\n			<div class="form-group">', '', '', '', '', '', '', '', '', '', 'lssklslkklklklasklsklsk', '', 'Yes', 'a:1:{i:0;s:0:"";}', 0, 0, 'a:1:{i:0;s:0:"";}', 0, '', 0, '', '', '', '2017-11-18 10:11:06', '2017-11-18 10:11:06', '0', 1, '2017-11-18 10:01:45', 1, 'sddsndjdndjkndss'),
-(3, 'NetronIT', '261661', 0, '2017-08-01', '9876251656', 7, '9876543', 'crystoline@gmail.com', 's duihduisdh', 'djksd hddsjkd sh', 'd ijisdhjsdiosdh', 'osdhisd hso', ' iodhsdiohs', 'isdh sdiohsdo', 'diohsdsd iohsdio', 'dhsiosdhisd', 'dhisdohsdo', 'dihsioshd', 'sihiihsishsishs', 'dihsdisdsd hi', 'i dosidhsosdh', 'Yes', 'a:5:{i:0;s:4:"Name";i:1;s:7:"Address";i:2;s:3:"DOB";i:3;s:9:"Phone No.";i:4;s:0:"";}', 0, 0, 'a:3:{i:0;s:7:"Courier";i:1;s:24:"Direct Credit to Account";i:2;s:0:"";}', 13, 'slskhsli', 9876543, 'Savings Account', 'Lagos', 'sakl jijdosjsisjskl', '2017-11-18 08:52:17', '2017-11-18 10:01:25', '1', 1, '2017-11-18 10:01:25', 1, 'jkkasjasjkxkdnssdjkndjksd');
+INSERT INTO `merchants` (`id`, `company_name`, `rc_no`, `type_of_ownership`, `date_reg`, `office_phone`, `staff_strength`, `cus_serv_phone`, `office_email`, `office_address`, `postal_address`, `name_of_p_cont_pers`, `email_of_p_cont_pers`, `des_of_p_cont_pers`, `phone_of_p_cont_pers`, `name_of_s_cont_pers`, `des_of_s_cont_pers`, `email_of_s_cont_pers`, `phone_of_s_cont_pers`, `website_name`, `website_url`, `desc_prod`, `cust_pre_reg`, `if_cust_pre_reg`, `trans_vol_per_day`, `no_of_days_for_delev`, `method_of_deliv`, `merchant_bank`, `account_name`, `account_no`, `account_type`, `bank_branch`, `additional_information`, `date_of_reg`, `date_updated`, `merchant_status`, `user_id`, `date_validated`, `validated_user`, `reason`, `documents`) VALUES
+(1, 'NetronIT', '261661', 0, '2017-08-01', '', 25, '', '', '', 'snsknaknksa', '', '', '', '', '', '', '', '', '', 'lssklslkklklklasklsklsk', '', 'Yes', 'a:1:{i:0;s:0:"";}', 0, 0, 'a:1:{i:0;s:0:"";}', 0, '', 0, '', '', '', '2017-11-18 04:42:54', '2017-11-18 16:43:11', '2', 1, '2017-11-18 04:43:11', 1, 'lslmslas', NULL),
+(3, 'NetronIT', '261661', 0, '2017-08-01', '9876251656', 7, '9876543', 'crystoline@gmail.com', 's duihduisdh', 'djksd hddsjkd sh', 'd ijisdhjsdiosdh', 'osdhisd hso', ' iodhsdiohs', 'isdh sdiohsdo', 'diohsdsd iohsdio', 'dhsiosdhisd', 'dhisdohsdo', 'dihsioshd', 'sihiihsishsishs', 'dihsdisdsd hi', 'i dosidhsosdh', 'Yes', 'a:5:{i:0;s:4:"Name";i:1;s:7:"Address";i:2;s:3:"DOB";i:3;s:9:"Phone No.";i:4;s:0:"";}', 0, 0, 'a:3:{i:0;s:7:"Courier";i:1;s:24:"Direct Credit to Account";i:2;s:0:"";}', 13, 'slskhsli', 9876543, 'Savings Account', 'Lagos', 'sakl jijdosjsisjskl', '2017-11-18 08:52:17', '2017-11-18 10:01:25', '1', 1, '2017-11-18 10:01:25', 1, 'jkkasjasjkxkdnssdjkndjksd', NULL),
+(4, 'sdopjdpo sdjdposj', 'sojsodjs', 0, 'odojsdo', 'd sddojdspoj', 19, 'doj dpojdfojfq', 'p fpodd', 'dpf jojodsjod', 'sd odsdojdop jpodpj ds jojso', 'd idssdohsd', 'iodhiodhsdi', 'dishihidhds', 'hsdisdh disd', 'sdio dhidsodhs', 'sd isdhdi', 'hsd ihsdiosdh', 'd ihisdhds', ' isdiodshds', 'sdhids dhdis', 'sdosd diodhsiodh ', 'Yes', 'a:5:{i:0;s:4:"Name";i:1;s:3:"DOB";i:2;s:7:"Picture";i:3;s:9:"Phone No.";i:4;s:0:"";}', 1000, 2, 'a:3:{i:0;s:7:"Courier";i:1;s:24:"Direct Credit to Account";i:2;s:0:"";}', 11, 'dksnnsdd', 2147483647, 'Savings Account', 'sdo jodijssoi', 'd jsdiosjdoisdjhio', '2017-11-18 05:26:13', '2017-11-18 17:26:13', '0', 1, '0000-00-00 00:00:00', 0, NULL, 'sdj ioisd');
 
 -- --------------------------------------------------------
 
@@ -239,7 +241,7 @@ ALTER TABLE `logs`
 -- AUTO_INCREMENT for table `merchants`
 --
 ALTER TABLE `merchants`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `ownership_type`
 --

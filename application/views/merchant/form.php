@@ -107,7 +107,7 @@
 			<div class="form-group">
 				<label for="postal_address">Postal Address</label>
 				<div class="form-line ">
-					<textarea class="form-control" type="text" name="postal_address" id="postal_address" required><?php echo $merchant->postal_address ?></textarea>
+					<textarea class="form-control" type="text" name="postal_address" id="postal_address" required><?php echo addslashes($merchant->postal_address) ?></textarea>
 				</div>
 				<label class="error"><?php echo form_error('postal_address'); ?></label>
 			</div>
@@ -421,7 +421,7 @@
 <fieldset class="disabled_field">
 	<legend>SECTION 5 OTHER INFORMATION</legend>
 	<div class="row">
-		<div class="col-sm-12">
+		<div class="col-sm-6">
 			<div class="form-group">
 				<label for="additional_information">Additional Information</label>
 				<div class="form-line ">
@@ -429,6 +429,17 @@
 				</div>
 				<label class="error"><?php echo form_error('additional_information'); ?></label>
 			</div>
+
 		</div>
+        <div class="col-sm-6">
+            <div class="form-group demo-tagsinput-area">
+                <label for="additional_information">Documents Received (Enter Multiple)</label>
+                <div class="form-line">
+                    <input type="text" class="form-control" data-role="tagsinput" name="documents" value="<?php echo $merchant->documents ?>">
+                </div>
+            </div>
+            <label class="error"><?php echo form_error('additional_information'); ?></label>
+        </div>
 	</div>
+
 </fieldset>

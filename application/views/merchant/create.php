@@ -441,7 +441,7 @@ validated_user int(9) -->
 					<fieldset>
 						<legend>SECTION 5 OTHER INFORMATION</legend>
                         <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="additional_information">Additional Information</label>
                                     <div class="form-line ">
@@ -449,6 +449,15 @@ validated_user int(9) -->
                                     </div>
                                     <label class="error"><?php echo form_error('additional_information'); ?></label>
                                 </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group demo-tagsinput-area">
+                                    <label for="additional_information">Documents Received (Enter Multiple)</label>
+                                    <div class="form-line">
+                                        <input type="text" class="form-control" data-role="tagsinput" name="documents" value="">
+                                    </div>
+                                </div>
+                                <label class="error"><?php echo form_error('additional_information'); ?></label>
                             </div>
                         </div>
                     </fieldset>
