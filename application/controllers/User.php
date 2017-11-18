@@ -32,22 +32,24 @@ class User extends CI_Controller {
 	} 
 	public function create(){
 		$this->checkLogin();
-		;
-		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required');
-		$this->form_validation->set_rules('first_name', 'Firstname', 'trim|required');
-		$this->form_validation->set_rules('last_name', 'Lastname', 'trim|required');
-		$this->form_validation->set_rules('user_type', 'Account Type', 'trim|required');
+		if($_POST) {
+			$this->form_validation->set_rules( 'email', 'Email', 'trim|required|valid_email|is_unique[users.email]' );
+			$this->form_validation->set_rules( 'password', 'Password', 'trim|required' );
+			$this->form_validation->set_rules( 'first_name', 'Firstname', 'trim|required' );
+			$this->form_validation->set_rules( 'last_name', 'Lastname', 'trim|required' );
+			$this->form_validation->set_rules( 'user_type', 'Account Type', 'trim|required' );
 
-		if ($this->form_validation->run() !== FALSE){
-			$result = $this->user_model->create($_POST);
-			if($result){
-				$this->session->set_flashdata('notification', 'User account was created');
-				redirect('user/list');
+			if ( $this->form_validation->run() !== false ) {
+				$result = $this->user_model->create( $_POST );
+				if ( $result ) {
+					$this->session->set_flashdata( 'notification', 'User account was created' );
+					redirect( 'user/list' );
+					return;
+				}
+
+
 			}
-			return ;
 		}
-		
 		$this->load->view('user/create');
 	}
 	public function view(){

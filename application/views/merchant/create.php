@@ -1,13 +1,13 @@
 <?php $this->load->view('includes/header'); ?>
 
 <div class="block-header">
-	<h2>Create User Account</h2>
+	<h2>Register Merchant</h2>
 </div>
 <div class="row">
 	<div class="col-sm-12">
 		<div class="card">
 			<div class="body">
-				<form action="" method="post">
+				<form action="" method="post" novalidate>
 				
 <!--
 
@@ -376,28 +376,82 @@ validated_user int(9) -->
 
 					<fieldset>
 						<legend>SECTION 4: ACQUIRING BANK</legend>
-                        merchant_bank int(4)
-                        account_name varchar(100)
-                        account_no int(9)
-                        account_type varchar(50)
-                        bank_branch varchar(100)
-                        <div class="form-group">
-							<label for="first_name">Firstname</label>
-							<div class="form-line ">
-								<input class="form-control" type="text" name="first_name" id="first_name" placeholder="Enter firstname" required>
-							</div>
-						</div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="first_name">Bank</label>
+                                    <div class="form-line ">
+                                        <select class="form-control  show-tick" name="merchant_bank" id="merchant_bank" required>
+                                            <option></option>
+                                            <?php foreach ($banks as $bank): ?>
+                                            <option value="<?php print $bank->bank_id ?>"><?php print $bank->bank_name ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                    <label class="error"><?php echo form_error('merchant_bank'); ?></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="account_name">Account Name</label>
+                                    <div class="form-line ">
+                                        <input class="form-control" type="text" name="account_name" id="account_name" required>
+                                    </div>
+                                    <label class="error"><?php echo form_error('account_name'); ?></label
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="account_no">Account Number</label>
+                                    <div class="form-line ">
+                                        <input class="form-control" type="text" name="account_no" id="account_no" required>
+                                    </div>
+                                    <label class="error"><?php echo form_error('account_no'); ?></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <b for="account_type">Account Type</b>
+                                    <div class="form-line ">
+                                        <input type="radio" name="account_type" id="account_type_current" required value="Current Account">
+                                        <label for="account_type_current">Current Account</label>
+                                        <input type="radio" name="account_type" id="account_type_saving" required value="Savings Account">
+                                        <label for="account_type_saving">Savings Account</label>
+                                    </div>
+                                    <label class="error"><?php echo form_error('account_type'); ?></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="bank_branch">Bank Branch</label>
+                                    <div class="form-line ">
+                                        <input class="form-control" type="text" name="bank_branch" id="bank_branch" required>
+                                    </div>
+                                    <label class="error"><?php echo form_error('bank_branch'); ?></label>
+                                </div>
+                            </div>
+                        </div>
+
 					</fieldset>
 
 					<fieldset>
 						<legend>SECTION 5 OTHER INFORMATION</legend>
-						<div class="form-group">
-							<label for="first_name">Firstname</label>
-							<div class="form-line ">
-								<input class="form-control" type="text" name="first_name" id="first_name" placeholder="Enter firstname" required>
-							</div>
-						</div>
-					</fieldset>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="additional_information">Additional Information</label>
+                                    <div class="form-line ">
+                                        <textarea class="form-control" type="text" name="additional_information" id="additional_information"></textarea>
+                                    </div>
+                                    <label class="error"><?php echo form_error('additional_information'); ?></label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
 					
 				
 					<button class="btn btn-success">Save</button>

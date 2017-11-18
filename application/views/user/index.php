@@ -5,7 +5,7 @@
 </div>
 <div class="row">
 <div class="card">
-			<div class="body">
+    <div class="body">
 	<a href="<?php print site_url('user/create') ?>" class="btn btn-primary pull-right">
 	<i></i>
 	Create User</a>
@@ -41,7 +41,7 @@
 	</div>
 </div>
 <script>
-window.load = function(){
+window.onload = function(){
 	$('.datatable-user').DataTable({
         responsive: true
     });
