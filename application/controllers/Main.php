@@ -17,13 +17,16 @@ class Main extends CI_Controller {
 	}
 	public function index()
 	{
+		$user = $this->session->userdata('user');
+		//die(var_dump($user));
 		$this->load->model('user_model');
 		$this->load->model('merchant_model');
 
 		$data['user_count'] = count($this->user_model->all());
-		$data['merchants_count'] = count($this->merchant_model->all());
-		$data['merchants_approved_count'] = count($this->merchant_model->all(1));
-		$data['merchants_pending_count'] = count($this->merchant_model->all(0));
+		$inputer = ($user->user_type == 'Inputer')? $user->id: false;
+		$data['merchants_count'] = count($this->merchant_model->all(false, $inputer));
+		$data['merchants_approved_count'] = count($this->merchant_model->all(1,$inputer));
+		$data['merchants_pending_count'] = count($this->merchant_model->all(0,$inputer));
 
 		$this->load->view('main', $data);
 	}
