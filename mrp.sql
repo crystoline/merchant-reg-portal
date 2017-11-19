@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2017 at 03:12 PM
+-- Generation Time: Nov 19, 2017 at 09:06 PM
 -- Server version: 5.5.53
 -- PHP Version: 7.0.9
 
@@ -28,6 +28,7 @@ USE `mrp`;
 -- Table structure for table `banks`
 --
 
+DROP TABLE IF EXISTS `banks`;
 CREATE TABLE `banks` (
   `bank_id` int(10) UNSIGNED NOT NULL,
   `bank_name` varchar(100) NOT NULL,
@@ -78,6 +79,7 @@ INSERT INTO `banks` (`bank_id`, `bank_name`, `bank_code`, `bank_enabled`, `bankI
 -- Table structure for table `logs`
 --
 
+DROP TABLE IF EXISTS `logs`;
 CREATE TABLE `logs` (
   `log_id` int(9) NOT NULL,
   `event` varchar(100) NOT NULL,
@@ -93,6 +95,7 @@ CREATE TABLE `logs` (
 -- Table structure for table `merchants`
 --
 
+DROP TABLE IF EXISTS `merchants`;
 CREATE TABLE `merchants` (
   `id` int(9) NOT NULL,
   `company_name` varchar(100) NOT NULL,
@@ -146,7 +149,7 @@ CREATE TABLE `merchants` (
 INSERT INTO `merchants` (`id`, `company_name`, `rc_no`, `type_of_ownership`, `date_reg`, `office_phone`, `staff_strength`, `cus_serv_phone`, `office_email`, `office_address`, `postal_address`, `name_of_p_cont_pers`, `email_of_p_cont_pers`, `des_of_p_cont_pers`, `phone_of_p_cont_pers`, `name_of_s_cont_pers`, `des_of_s_cont_pers`, `email_of_s_cont_pers`, `phone_of_s_cont_pers`, `website_name`, `website_url`, `desc_prod`, `cust_pre_reg`, `if_cust_pre_reg`, `trans_vol_per_day`, `no_of_days_for_delev`, `method_of_deliv`, `merchant_bank`, `account_name`, `account_no`, `account_type`, `bank_branch`, `additional_information`, `date_of_reg`, `date_updated`, `merchant_status`, `user_id`, `date_validated`, `validated_user`, `reason`, `documents`, `merchant_code`, `terminal_id`) VALUES
 (1, 'NetronIT', '261661', '0', '2017-08-01', '', 25, '', '', '', 'snsknaknksa', '', '', '', '', '', '', '', '', '', 'lssklslkklklklasklsklsk', '', 'Yes', 'a:1:{i:0;s:0:"";}', 0, 0, 'a:1:{i:0;s:0:"";}', 0, '', '0', '', '', '', '2017-11-18 04:42:54', '2017-11-18 16:43:11', '2', 1, '2017-11-18 04:43:11', 1, 'lslmslas', NULL, NULL, NULL),
 (3, 'NetronIT', '261661', '0', '2017-08-01', '9876251656', 7, '9876543', 'crystoline@gmail.com', 's duihduisdh', 'djksd hddsjkd sh', 'd ijisdhjsdiosdh', 'osdhisd hso', ' iodhsdiohs', 'isdh sdiohsdo', 'diohsdsd iohsdio', 'dhsiosdhisd', 'dhisdohsdo', 'dihsioshd', 'sihiihsishsishs', 'dihsdisdsd hi', 'i dosidhsosdh', 'Yes', 'a:5:{i:0;s:4:"Name";i:1;s:7:"Address";i:2;s:3:"DOB";i:3;s:9:"Phone No.";i:4;s:0:"";}', 0, 0, 'a:3:{i:0;s:7:"Courier";i:1;s:24:"Direct Credit to Account";i:2;s:0:"";}', 13, 'slskhsli', '9876543', 'Savings Account', 'Lagos', 'sakl jijdosjsisjskl', '2017-11-18 08:52:17', '2017-11-19 14:02:21', '1', 1, '2017-11-18 10:01:25', 1, 'jkkasjasjkxkdnssdjkndjksd', NULL, NULL, '239782380'),
-(4, 'sdopjdpo sdjdposj', 'sojsodjs', '0', 'odojsdo', 'd sddojdspoj', 19, 'doj dpojdfojfq', 'p fpodd', 'dpf jojodsjod', 'sd odsdojdop jpodpj ds jojso', 'd idssdohsd', 'iodhiodhsdi', 'dishihidhds', 'hsdisdh disd', 'sdio dhidsodhs', 'sd isdhdi', 'hsd ihsdiosdh', 'd ihisdhds', ' isdiodshds', 'sdhids dhdis', 'sdosd diodhsiodh ', 'Yes', 'a:5:{i:0;s:4:"Name";i:1;s:3:"DOB";i:2;s:7:"Picture";i:3;s:9:"Phone No.";i:4;s:0:"";}', 1000, 2, 'a:3:{i:0;s:7:"Courier";i:1;s:24:"Direct Credit to Account";i:2;s:0:"";}', 11, 'dksnnsdd', '2147483647', 'Savings Account', 'sdo jodijssoi', 'd jsdiosjdoisdjhio', '2017-11-18 05:26:13', '2017-11-18 17:26:13', '0', 1, '0000-00-00 00:00:00', 0, NULL, 'sdj ioisd', NULL, NULL),
+(4, 'sdopjdpo sdjdposj', 'sojsodjs', '0', 'odojsdo', 'd sddojdspoj', 19, 'doj dpojdfojfq', 'p fpodd', 'dpf jojodsjod', 'sd odsdojdop jpodpj ds jojso', 'd idssdohsd', 'iodhiodhsdi', 'dishihidhds', 'hsdisdh disd', 'sdio dhidsodhs', 'sd isdhdi', 'hsd ihsdiosdh', 'd ihisdhds', ' isdiodshds', 'sdhids dhdis', 'sdosd diodhsiodh ', 'Yes', 'a:5:{i:0;s:4:"Name";i:1;s:3:"DOB";i:2;s:7:"Picture";i:3;s:9:"Phone No.";i:4;s:0:"";}', 1000, 2, 'a:3:{i:0;s:7:"Courier";i:1;s:24:"Direct Credit to Account";i:2;s:0:"";}', 11, 'dksnnsdd', '2147483647', 'Savings Account', 'sdo jodijssoi', 'd jsdiosjdoisdjhio', '2017-11-18 05:26:13', '2017-11-19 20:04:58', '1', 1, '2017-11-19 08:04:32', 1, 'iuhui huhi', 'sdj ioisd', '5EPWM', 'ytyutyutu'),
 (5, 'Omogori LTD', '2918278', 'Venture Limited', '2017-08-01', '9876251656', 23, '9876543', 'crystoline@gmail.com', 'isd jsdisdj', 'sd didsisdo', 'dsidjsij', 'idsjdidjd', 'idsjsdij', '09876543', 's jisjidjs', 'idijsi', 'sdidijdis', '09876543', 'd ijisdjd', 'lssklslkklklklasklsklsk', 'sdjhdjsdhdj', 'Yes', 'a:4:{i:0;s:4:"Name";i:1;s:7:"Address";i:2;s:7:"Picture";s:5:"other";s:0:"";}', 1000, 2, 'a:3:{i:0;s:7:"Courier";i:1;s:24:"Direct Credit to Account";s:6:"custom";s:0:"";}', 17, 'dkd jksdjdissdj', '098765617891', 'Current Account', 'dsli dssss jss', 'sdijdidjidsj', '2017-11-19 01:31:05', '2017-11-19 13:31:48', '1', 3, '2017-11-19 01:31:48', 1, 'FIne', 'sdijdisj,isdh hsd,jsddids,ddddd,dddds', '54DRF', NULL);
 
 -- --------------------------------------------------------
@@ -155,6 +158,7 @@ INSERT INTO `merchants` (`id`, `company_name`, `rc_no`, `type_of_ownership`, `da
 -- Table structure for table `ownership_type`
 --
 
+DROP TABLE IF EXISTS `ownership_type`;
 CREATE TABLE `ownership_type` (
   `ot_id` int(9) NOT NULL,
   `ot_name` varchar(100) NOT NULL,
@@ -167,6 +171,7 @@ CREATE TABLE `ownership_type` (
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(9) NOT NULL,
   `first_name` varchar(50) NOT NULL,
