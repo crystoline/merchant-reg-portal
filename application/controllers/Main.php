@@ -26,7 +26,7 @@ class Main extends CI_Controller {
 		$inputer = ($user->user_type == 'Inputer')? $user->id: false;
 		$data['merchants_count'] = count($this->merchant_model->all(false, $inputer));
 		$data['merchants_approved_count'] = count($this->merchant_model->all(1,$inputer));
-		$data['merchants_pending_count'] = count($this->merchant_model->all(0,$inputer));
+		$data['merchants_pending_count'] = $data['merchants_count'] - $data['merchants_approved_count'];
 
 		$this->load->view('main', $data);
 	}
