@@ -251,7 +251,7 @@
 				<div class="form-line ">
 					<b >Is Customer pre-registration? </b><br>
 					<input type="radio" id="cust_pre_reg_no" name="cust_pre_reg" value="No"  <?php echo $merchant->cust_pre_reg == "No"? ' checked ': '' ?> />
-					<label for="user_type_user">No</label>
+					<label for="cust_pre_reg_no">No</label>
 					<input type="radio" id="cust_pre_reg_yes" name="cust_pre_reg" value="Yes" <?php echo $merchant->cust_pre_reg == "Yes"? ' checked ': '' ?> />
 					<label for="cust_pre_reg_yes">Yes</label>
 				</div>
@@ -261,29 +261,29 @@
 				<label for="if_cust_pre_reg">(If yes, what basic information is provided to you?)</label>
 				<div class="form-line ">
 					<?php $if_cust_pre_reg = unserialize(stripcslashes($merchant->if_cust_pre_reg)) ?>
-					<input type="checkbox" id="if_cust_pre_reg_1" name="if_cust_pre_reg[]" value="Name" <?php echo @$if_cust_pre_reg[0] == "NNameo"? ' checked ': '' ?>>
+					<input type="checkbox" id="if_cust_pre_reg_1" name="if_cust_pre_reg[]" value="Name" <?php echo in_array("Name", $if_cust_pre_reg)? ' checked ': '' ?>>
 					<label for="if_cust_pre_reg_1">Name</label>
 
-					<input type="checkbox" id="if_cust_pre_reg_2" name="if_cust_pre_reg[]" value="Address" <?php echo @$if_cust_pre_reg[1] == "Address"? ' checked ': '' ?>>
+					<input type="checkbox" id="if_cust_pre_reg_2" name="if_cust_pre_reg[]" value="Address" <?php echo in_array("Address", $if_cust_pre_reg)? ' checked ': '' ?>>
 					<label for="if_cust_pre_reg_2">Address</label>
 
-					<input type="checkbox" id="if_cust_pre_reg_3" name="if_cust_pre_reg[]" value="DOB" <?php echo @$if_cust_pre_reg[2] == "DOB"? ' checked ': '' ?>>
+					<input type="checkbox" id="if_cust_pre_reg_3" name="if_cust_pre_reg[]" value="DOB" <?php echo in_array("DOB", $if_cust_pre_reg)? ' checked ': '' ?>>
 					<label for="if_cust_pre_reg_3">DOB</label>
 
-					<input type="checkbox" id="if_cust_pre_reg_4" name="if_cust_pre_reg[]" value="Picture" <?php echo @$if_cust_pre_reg[3] == "Picture"? ' checked ': '' ?>>
+					<input type="checkbox" id="if_cust_pre_reg_4" name="if_cust_pre_reg[]" value="Picture" <?php echo in_array("Picture", $if_cust_pre_reg)? ' checked ': '' ?>>
 					<label for="if_cust_pre_reg_4">Picture</label>
 
-					<input type="checkbox" id="if_cust_pre_reg_5" name="if_cust_pre_reg[]" value="Phone No." <?php echo @$if_cust_pre_reg[4] == "Phone No."? ' checked ': '' ?>>
+					<input type="checkbox" id="if_cust_pre_reg_5" name="if_cust_pre_reg[]" value="Phone No." <?php echo in_array("Phone No.", $if_cust_pre_reg)? ' checked ': '' ?>>
 					<label for="if_cust_pre_reg_5">Phone No.</label>
 
-					<input type="checkbox" id="if_cust_pre_reg_6" name="if_cust_pre_reg[]" value="Email address" <?php @$if_cust_pre_reg[5] == "Email address"? ' checked ': '' ?>>
+					<input type="checkbox" id="if_cust_pre_reg_6" name="if_cust_pre_reg[]" value="Email address" <?php in_array("Email address", $if_cust_pre_reg)? ' checked ': '' ?>>
 					<label for="if_cust_pre_reg_6">Email address</label>
 
-					<input type="checkbox" id="if_cust_pre_reg_7" name="if_cust_pre_reg[]" value="Security Question" <?php @$if_cust_pre_reg[6] == "Security Question"? ' checked ': '' ?>>
+					<input type="checkbox" id="if_cust_pre_reg_7" name="if_cust_pre_reg[]" value="Security Question" <?php in_array("Security Question", $if_cust_pre_reg)? ' checked ': '' ?>>
 					<label for="if_cust_pre_reg_7">Security Question</label>, or
 
 					<label for="if_cust_pre_reg_custom">Other (Specify)</label>
-					<input type="text" id="if_cust_pre_reg_custom" name="if_cust_pre_reg[]" value="<?php echo @$if_cust_pre_reg[7] ?>">
+					<input type="text" id="if_cust_pre_reg_custom" name="if_cust_pre_reg[other]" value="<?php echo @$if_cust_pre_reg['other'] ?>">
 
 				</div>
 				<label class="error"><?php echo form_error('if_cust_pre_reg'); ?></label>
@@ -311,41 +311,29 @@
 				<label class="error"><?php echo form_error('no_of_days_for_delev'); ?></label>
 			</div>
 		</div>
-		<div class="col-sm-6">
-			<div class="form-group">
-				<label for="website_url">Website Url</label>
-				<div class="form-line">
-					<input class="form-control" type="text" name="website_url" id="website_url"
-					       value="<?php echo $merchant->website_url ?>" >
-				</div>
-				<label class="error"><?php echo form_error('website_url'); ?></label>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-12">
+        <div class="col-sm-6">
 			<?php $method_of_deliv = unserialize($merchant->method_of_deliv); ?>
-			<label for="if_cust_pre_reg">Method of Goods/Service Delivery</label>
+            <label for="if_cust_pre_reg">Method of Goods/Service Delivery</label>
 			<?php $method_of_deliv = unserialize($merchant->method_of_deliv); ?>
-			<div class="form-line ">
-				<input type="checkbox" id="method_of_deliv_1" name="method_of_deliv[]" value="Courier" <?php print @$method_of_deliv[0] == 'Courier'? ' checked ': ''?>>
-				<label for="method_of_deliv_1">Courier</label>
+            <div class="form-line ">
+                <input type="checkbox" id="method_of_deliv_1" name="method_of_deliv[]" value="Courier" <?php print in_array('Courier', $method_of_deliv)? ' checked ': ''?>>
+                <label for="method_of_deliv_1">Courier</label>
 
-				<input type="checkbox" id="method_of_deliv_2" name="method_of_deliv[]" value="Online download" <?php print @$method_of_deliv[1] == 'Online download'? ' checked ': ''?>>
-				<label for="method_of_deliv_2">Online download</label>
+                <input type="checkbox" id="method_of_deliv_2" name="method_of_deliv[]" value="Online download" <?php print in_array('Online download', $method_of_deliv)? ' checked ': ''?>>
+                <label for="method_of_deliv_2">Online download</label>
 
-				<input type="checkbox" id="method_of_deliv_3" name="method_of_deliv[]" value="Direct Credit to Account"  <?php print @$method_of_deliv[2] == 'Direct Credit to Account'? ' checked ': ''?>>
-				<label for="method_of_deliv_3">Direct Credit to Account</label>, or
+                <input type="checkbox" id="method_of_deliv_3" name="method_of_deliv[]" value="Direct Credit to Account"  <?php print in_array('Direct Credit to Account', $method_of_deliv)? ' checked ': ''?>>
+                <label for="method_of_deliv_3">Direct Credit to Account</label>, or
 
-				<label for="method_of_deliv_custom">Other (Give Details)</label>
-				<input type="text" id="method_of_deliv_custom" name="method_of_deliv[]" value="<?php echo @$method_of_deliv[4] ?>">
+                <label for="method_of_deliv_custom">Other (Give Details)</label>
+                <input type="text" id="method_of_deliv_custom" name="method_of_deliv[custom]" value="<?php echo @$method_of_deliv[custom] ?>">
 
-			</div>
-			<label class="error"><?php echo form_error('method_of_deliv'); ?></label>
+            </div>
+            <label class="error"><?php echo form_error('method_of_deliv'); ?></label>
 
-		</div>
-
+        </div>
 	</div>
+
 
 
 

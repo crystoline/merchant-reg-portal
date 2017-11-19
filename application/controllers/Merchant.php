@@ -21,6 +21,14 @@ class Merchant extends CI_Controller {
 				$this->session->set_flashdata( 'notification', 'Merchant status was update' );
 			}
 		}
+		if(@$_POST['terminal_id'] and @$_POST['merchant_id']){
+			@$terminal_id = $_POST['terminal_id'];
+			$merchant_id = $_POST['merchant_id'];
+
+			if($result = $this->merchant_model->change_terminal_id($merchant_id, $terminal_id)){
+				$this->session->set_flashdata( 'notification', 'Merchant\\\'s Terminal ID was update' );
+			}
+		}
 	}
 	private function checkLogin(){
 		if( !$this->session->userdata('isLoggedIn') ) {
@@ -31,8 +39,9 @@ class Merchant extends CI_Controller {
 
 	public function index()
 	{
-		$data['user'] = $this->session->userdata('user');
-		$data['merchants'] = $this->merchant_model->list();
+		$user = $this->session->userdata('user');
+		$inputer_id = ($user->user_type == 'Inputer')? $user->id : 0;
+		$data['merchants'] = $this->merchant_model->all(false, $inputer_id);
 
 		$this->load->view('merchant/index', $data);
 	}

@@ -1,6 +1,6 @@
 <?php
-$user = $this->session->userdata('user');
-//var_dump($user);
+$login_user = $this->session->userdata('user');
+//var_dump($login_user);
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,11 +12,44 @@ $user = $this->session->userdata('user');
     <title>Dashboard | <?php print __SITE_SHORTNAME__ ?></title>
     <!-- Favicon-->
     <link rel="icon" href="<?php echo base_url()?>favicon.ico" type="image/x-icon">
+    <style>
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Roboto'), local('Roboto-Regular'), url(<?php echo base_url()?>/fonts/oeEVQYYBjVpg-nn8NItjTw.ttf) format('truetype');
+        }
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Roboto Bold'), local('Roboto-Bold'), url(<?php echo base_url()?>/fonts/77FXFjRbGzN4aCrSFhlh3qCWcynf_cDxXwCLxiixG1c.ttf) format('truetype');
+        }
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(<?php echo base_url()?>/fonts/2fcrYFNaTjcS6g4U3t-Y5StnKWgpfO2iSkLzTz-AABg.ttf) format('truetype');
+        }
 
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+        }
+
+
+    </style>
     <!-- Bootstrap Core Css -->
     <link href="<?php echo base_url()?>plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
@@ -41,6 +74,9 @@ $user = $this->session->userdata('user');
 </head>
 
 <body class="theme-red">
+<!-- Jquery Core Js -->
+<script src="<?php echo base_url()?>plugins/jquery/jquery.min.js"></script>
+
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -61,17 +97,6 @@ $user = $this->session->userdata('user');
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
     <!-- #END# Overlay For Sidebars -->
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <div class="search-icon">
-            <i class="material-icons">search</i>
-        </div>
-        <input type="text" placeholder="START TYPING...">
-        <div class="close-search">
-            <i class="material-icons">close</i>
-        </div>
-    </div>
-    <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
@@ -110,9 +135,9 @@ $user = $this->session->userdata('user');
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<?php print $user->first_name.' '.$user->last_name ?>
+						<?php print $login_user->first_name.' '.$login_user->last_name ?>
 					</div>
-                    <div class="email"><?php print $user->email ?></div>
+                    <div class="email"><?php print $login_user->email ?></div>
             
                 </div>
             </div>
@@ -133,12 +158,14 @@ $user = $this->session->userdata('user');
                             <span>Merchants</span>
                         </a>
 					</li>
+                    <?php if($login_user->user_type == 'admin'): ?>
                     <li>
-                        <a href="<?php print site_url('user/list') ?>">
+                        <a href="<?php print site_url('user/all') ?>">
                             <i class="material-icons">account_box</i>
                             <span>Users</span>
                         </a>
 					</li>
+                    <?php endif; ?>
 					
                     
                 </ul>

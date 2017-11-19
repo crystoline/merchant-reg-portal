@@ -3,8 +3,11 @@
 class User_Model extends CI_Model{
 	
 
-	public function list() {
+	public function all($user_type='') {
 		$this->db->from('users');
+		if($user_type){
+			$this->db->where('user_type', $user_type);
+		}
 		return $this->db->get()->result();
 	}
 

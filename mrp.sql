@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2017 at 06:30 PM
+-- Generation Time: Nov 19, 2017 at 03:12 PM
 -- Server version: 5.5.53
 -- PHP Version: 7.0.9
 
@@ -97,7 +97,7 @@ CREATE TABLE `merchants` (
   `id` int(9) NOT NULL,
   `company_name` varchar(100) NOT NULL,
   `rc_no` varchar(50) NOT NULL,
-  `type_of_ownership` int(9) NOT NULL,
+  `type_of_ownership` varchar(100) NOT NULL,
   `date_reg` varchar(50) NOT NULL,
   `office_phone` varchar(50) NOT NULL,
   `staff_strength` int(9) NOT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE `merchants` (
   `method_of_deliv` varchar(100) NOT NULL,
   `merchant_bank` int(4) NOT NULL,
   `account_name` varchar(100) NOT NULL,
-  `account_no` int(9) NOT NULL,
+  `account_no` varchar(100) NOT NULL,
   `account_type` varchar(50) NOT NULL,
   `bank_branch` varchar(100) NOT NULL,
   `additional_information` varchar(500) NOT NULL,
@@ -134,17 +134,20 @@ CREATE TABLE `merchants` (
   `date_validated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `validated_user` int(9) NOT NULL,
   `reason` text,
-  `documents` text
+  `documents` text,
+  `merchant_code` varchar(45) DEFAULT NULL,
+  `terminal_id` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `merchants`
 --
 
-INSERT INTO `merchants` (`id`, `company_name`, `rc_no`, `type_of_ownership`, `date_reg`, `office_phone`, `staff_strength`, `cus_serv_phone`, `office_email`, `office_address`, `postal_address`, `name_of_p_cont_pers`, `email_of_p_cont_pers`, `des_of_p_cont_pers`, `phone_of_p_cont_pers`, `name_of_s_cont_pers`, `des_of_s_cont_pers`, `email_of_s_cont_pers`, `phone_of_s_cont_pers`, `website_name`, `website_url`, `desc_prod`, `cust_pre_reg`, `if_cust_pre_reg`, `trans_vol_per_day`, `no_of_days_for_delev`, `method_of_deliv`, `merchant_bank`, `account_name`, `account_no`, `account_type`, `bank_branch`, `additional_information`, `date_of_reg`, `date_updated`, `merchant_status`, `user_id`, `date_validated`, `validated_user`, `reason`, `documents`) VALUES
-(1, 'NetronIT', '261661', 0, '2017-08-01', '', 25, '', '', '', 'snsknaknksa', '', '', '', '', '', '', '', '', '', 'lssklslkklklklasklsklsk', '', 'Yes', 'a:1:{i:0;s:0:"";}', 0, 0, 'a:1:{i:0;s:0:"";}', 0, '', 0, '', '', '', '2017-11-18 04:42:54', '2017-11-18 16:43:11', '2', 1, '2017-11-18 04:43:11', 1, 'lslmslas', NULL),
-(3, 'NetronIT', '261661', 0, '2017-08-01', '9876251656', 7, '9876543', 'crystoline@gmail.com', 's duihduisdh', 'djksd hddsjkd sh', 'd ijisdhjsdiosdh', 'osdhisd hso', ' iodhsdiohs', 'isdh sdiohsdo', 'diohsdsd iohsdio', 'dhsiosdhisd', 'dhisdohsdo', 'dihsioshd', 'sihiihsishsishs', 'dihsdisdsd hi', 'i dosidhsosdh', 'Yes', 'a:5:{i:0;s:4:"Name";i:1;s:7:"Address";i:2;s:3:"DOB";i:3;s:9:"Phone No.";i:4;s:0:"";}', 0, 0, 'a:3:{i:0;s:7:"Courier";i:1;s:24:"Direct Credit to Account";i:2;s:0:"";}', 13, 'slskhsli', 9876543, 'Savings Account', 'Lagos', 'sakl jijdosjsisjskl', '2017-11-18 08:52:17', '2017-11-18 10:01:25', '1', 1, '2017-11-18 10:01:25', 1, 'jkkasjasjkxkdnssdjkndjksd', NULL),
-(4, 'sdopjdpo sdjdposj', 'sojsodjs', 0, 'odojsdo', 'd sddojdspoj', 19, 'doj dpojdfojfq', 'p fpodd', 'dpf jojodsjod', 'sd odsdojdop jpodpj ds jojso', 'd idssdohsd', 'iodhiodhsdi', 'dishihidhds', 'hsdisdh disd', 'sdio dhidsodhs', 'sd isdhdi', 'hsd ihsdiosdh', 'd ihisdhds', ' isdiodshds', 'sdhids dhdis', 'sdosd diodhsiodh ', 'Yes', 'a:5:{i:0;s:4:"Name";i:1;s:3:"DOB";i:2;s:7:"Picture";i:3;s:9:"Phone No.";i:4;s:0:"";}', 1000, 2, 'a:3:{i:0;s:7:"Courier";i:1;s:24:"Direct Credit to Account";i:2;s:0:"";}', 11, 'dksnnsdd', 2147483647, 'Savings Account', 'sdo jodijssoi', 'd jsdiosjdoisdjhio', '2017-11-18 05:26:13', '2017-11-18 17:26:13', '0', 1, '0000-00-00 00:00:00', 0, NULL, 'sdj ioisd');
+INSERT INTO `merchants` (`id`, `company_name`, `rc_no`, `type_of_ownership`, `date_reg`, `office_phone`, `staff_strength`, `cus_serv_phone`, `office_email`, `office_address`, `postal_address`, `name_of_p_cont_pers`, `email_of_p_cont_pers`, `des_of_p_cont_pers`, `phone_of_p_cont_pers`, `name_of_s_cont_pers`, `des_of_s_cont_pers`, `email_of_s_cont_pers`, `phone_of_s_cont_pers`, `website_name`, `website_url`, `desc_prod`, `cust_pre_reg`, `if_cust_pre_reg`, `trans_vol_per_day`, `no_of_days_for_delev`, `method_of_deliv`, `merchant_bank`, `account_name`, `account_no`, `account_type`, `bank_branch`, `additional_information`, `date_of_reg`, `date_updated`, `merchant_status`, `user_id`, `date_validated`, `validated_user`, `reason`, `documents`, `merchant_code`, `terminal_id`) VALUES
+(1, 'NetronIT', '261661', '0', '2017-08-01', '', 25, '', '', '', 'snsknaknksa', '', '', '', '', '', '', '', '', '', 'lssklslkklklklasklsklsk', '', 'Yes', 'a:1:{i:0;s:0:"";}', 0, 0, 'a:1:{i:0;s:0:"";}', 0, '', '0', '', '', '', '2017-11-18 04:42:54', '2017-11-18 16:43:11', '2', 1, '2017-11-18 04:43:11', 1, 'lslmslas', NULL, NULL, NULL),
+(3, 'NetronIT', '261661', '0', '2017-08-01', '9876251656', 7, '9876543', 'crystoline@gmail.com', 's duihduisdh', 'djksd hddsjkd sh', 'd ijisdhjsdiosdh', 'osdhisd hso', ' iodhsdiohs', 'isdh sdiohsdo', 'diohsdsd iohsdio', 'dhsiosdhisd', 'dhisdohsdo', 'dihsioshd', 'sihiihsishsishs', 'dihsdisdsd hi', 'i dosidhsosdh', 'Yes', 'a:5:{i:0;s:4:"Name";i:1;s:7:"Address";i:2;s:3:"DOB";i:3;s:9:"Phone No.";i:4;s:0:"";}', 0, 0, 'a:3:{i:0;s:7:"Courier";i:1;s:24:"Direct Credit to Account";i:2;s:0:"";}', 13, 'slskhsli', '9876543', 'Savings Account', 'Lagos', 'sakl jijdosjsisjskl', '2017-11-18 08:52:17', '2017-11-19 14:02:21', '1', 1, '2017-11-18 10:01:25', 1, 'jkkasjasjkxkdnssdjkndjksd', NULL, NULL, '239782380'),
+(4, 'sdopjdpo sdjdposj', 'sojsodjs', '0', 'odojsdo', 'd sddojdspoj', 19, 'doj dpojdfojfq', 'p fpodd', 'dpf jojodsjod', 'sd odsdojdop jpodpj ds jojso', 'd idssdohsd', 'iodhiodhsdi', 'dishihidhds', 'hsdisdh disd', 'sdio dhidsodhs', 'sd isdhdi', 'hsd ihsdiosdh', 'd ihisdhds', ' isdiodshds', 'sdhids dhdis', 'sdosd diodhsiodh ', 'Yes', 'a:5:{i:0;s:4:"Name";i:1;s:3:"DOB";i:2;s:7:"Picture";i:3;s:9:"Phone No.";i:4;s:0:"";}', 1000, 2, 'a:3:{i:0;s:7:"Courier";i:1;s:24:"Direct Credit to Account";i:2;s:0:"";}', 11, 'dksnnsdd', '2147483647', 'Savings Account', 'sdo jodijssoi', 'd jsdiosjdoisdjhio', '2017-11-18 05:26:13', '2017-11-18 17:26:13', '0', 1, '0000-00-00 00:00:00', 0, NULL, 'sdj ioisd', NULL, NULL),
+(5, 'Omogori LTD', '2918278', 'Venture Limited', '2017-08-01', '9876251656', 23, '9876543', 'crystoline@gmail.com', 'isd jsdisdj', 'sd didsisdo', 'dsidjsij', 'idsjdidjd', 'idsjsdij', '09876543', 's jisjidjs', 'idijsi', 'sdidijdis', '09876543', 'd ijisdjd', 'lssklslkklklklasklsklsk', 'sdjhdjsdhdj', 'Yes', 'a:4:{i:0;s:4:"Name";i:1;s:7:"Address";i:2;s:7:"Picture";s:5:"other";s:0:"";}', 1000, 2, 'a:3:{i:0;s:7:"Courier";i:1;s:24:"Direct Credit to Account";s:6:"custom";s:0:"";}', 17, 'dkd jksdjdissdj', '098765617891', 'Current Account', 'dsli dssss jss', 'sdijdidjidsj', '2017-11-19 01:31:05', '2017-11-19 13:31:48', '1', 3, '2017-11-19 01:31:48', 1, 'FIne', 'sdijdisj,isdh hsd,jsddids,ddddd,dddds', '54DRF', NULL);
 
 -- --------------------------------------------------------
 
@@ -187,7 +190,8 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `stat
 (4, 'Omotayo', 'Ogunlade', 'omotayo.ogunlade@gmail.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', '0', 'admin', '2017-11-17 09:09:29', '2017-11-17 09:09:29'),
 (5, 'Akeem', 'Gbadamosi', 'akeem.gbada@yahoo.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', '0', 'admin', '2017-11-17 09:12:18', '2017-11-17 09:12:18'),
 (6, 'Damiel', 'Babatunde', 'daniel.babatunde@hotmail.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', '0', 'admin', '2017-11-17 09:14:42', '2017-11-17 09:14:42'),
-(7, 'Oluwaniberu', 'Awilo', 'skdks@ddksd.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', '0', 'Inputer', '2017-11-17 09:16:08', '2017-11-17 09:16:08');
+(7, 'Oluwaniberu', 'Awilo', 'skdks@ddksd.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', '0', 'Inputer', '2017-11-17 09:16:08', '2017-11-17 09:16:08'),
+(8, 'wieouweiuio', 'oeieiueiy', 'do.e@eope.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', '0', 'admin', '2017-11-19 10:26:30', '2017-11-19 10:26:30');
 
 --
 -- Indexes for dumped tables
@@ -209,7 +213,9 @@ ALTER TABLE `logs`
 -- Indexes for table `merchants`
 --
 ALTER TABLE `merchants`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `merchant_code_UNIQUE` (`merchant_code`),
+  ADD UNIQUE KEY `terminal_id_UNIQUE` (`terminal_id`);
 
 --
 -- Indexes for table `ownership_type`
@@ -241,7 +247,7 @@ ALTER TABLE `logs`
 -- AUTO_INCREMENT for table `merchants`
 --
 ALTER TABLE `merchants`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `ownership_type`
 --
@@ -251,7 +257,7 @@ ALTER TABLE `ownership_type`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

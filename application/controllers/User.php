@@ -3,15 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller {
 
-	
+	private $user = null;
 	function __construct(){
 		parent::__construct();
 		$this->load->model('user_model');
 		$this->load->helper(array('form'));
 		$this->load->library('form_validation');
+		$this->user = $this->session->userdata('user');
+
 	}
 	private function checkLogin(){
-		if( !$this->session->userdata('isLoggedIn') ) {
+
+		if( !$this->session->userdata('isLoggedIn')  or $this->user->user_type != 'admin') {
 			redirect('/user/login');
 			die();
 		}
@@ -25,9 +28,9 @@ class User extends CI_Controller {
 			redirect('/user/login');
 		}
 	}
-	public function list(){
+	public function all(){
 		$this->checkLogin();
-		$data['users'] = $this->user_model->list();
+		$data['users'] = $this->user_model->all();
 		$this->load->view('user/index', $data);
 	} 
 	public function create(){
@@ -43,7 +46,7 @@ class User extends CI_Controller {
 				$result = $this->user_model->create( $_POST );
 				if ( $result ) {
 					$this->session->set_flashdata( 'notification', 'User account was created' );
-					redirect( 'user/list' );
+					redirect( 'user/all' );
 					return;
 				}
 

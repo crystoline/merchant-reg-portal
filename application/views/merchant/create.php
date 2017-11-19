@@ -1,45 +1,16 @@
 <?php $this->load->view('includes/header'); ?>
 
-<div class="block-header">
-	<h2>Register Merchant</h2>
-</div>
+
 <div class="row">
 	<div class="col-sm-12">
 		<div class="card">
+            <div class="header">
+                <div class="block-header">
+                    <h2>Register Merchant</h2>
+                </div>
+            </div>
 			<div class="body">
 				<form action="" method="post" novalidate>
-				
-<!--
-
-
-
-additional_information varchar(500) 
-date_of_reg timestamp 
-date_updated timestamp 
-merchant_status enum('0','1','2') 
-user_id int(11) 
-date_validated timestamp 
-validated_user int(9) -->
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <div class="form-group">
-                                <label for=""></label>
-                                <div class="form-line ">
-                                    <input class="form-control" type="text" name="" id="" required>
-                                </div>
-                                <label class="error"><?php echo form_error(''); ?></label>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for=""></label>
-                                <div class="form-line ">
-                                    <input class="form-control" type="text" name="" id="" required>
-                                </div>
-                                <label class="error"><?php echo form_error(''); ?></label>
-                            </div>
-                        </div>
-                    </div>
                     <fieldset>
 						<legend>SECTION 1: General Information</legend>
 
@@ -278,7 +249,7 @@ validated_user int(9) -->
                                     <div class="form-line ">
                                         <b >Is Customer pre-registration? </b><br>
                                         <input type="radio" id="cust_pre_reg_no" name="cust_pre_reg" value="No" require  />
-                                        <label for="user_type_user">No</label>
+                                        <label for="cust_pre_reg_no">No</label>
                                         <input type="radio" id="cust_pre_reg_yes" name="cust_pre_reg" value="Yes" require />
                                         <label for="cust_pre_reg_yes">Yes</label>
                                     </div>
@@ -310,7 +281,7 @@ validated_user int(9) -->
                                         <label for="if_cust_pre_reg_7">Security Question</label>, or
 
                                         <label for="if_cust_pre_reg_custom">Other (Specify)</label>
-                                        <input type="text" id="if_cust_pre_reg_custom" name="if_cust_pre_reg[]" value="">
+                                        <input type="text" id="if_cust_pre_reg_custom" name="if_cust_pre_reg[other]" value="">
 
                                     </div>
                                     <label class="error"><?php echo form_error('if_cust_pre_reg'); ?></label>
@@ -336,18 +307,8 @@ validated_user int(9) -->
                                     <label class="error"><?php echo form_error('no_of_days_for_delev'); ?></label>
                                 </div>
                             </div>
+
                             <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="method_of_deliv">Website Url</label>
-                                    <div class="form-line">
-                                        <input class="form-control" type="text" name="method_of_deliv" id="method_of_deliv" >
-                                    </div>
-                                    <label class="error"><?php echo form_error('method_of_deliv'); ?></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
 
                                 <label for="if_cust_pre_reg">Method of Goods/Service Delivery</label>
                                 <div class="form-line ">
@@ -361,13 +322,12 @@ validated_user int(9) -->
                                     <label for="method_of_deliv_3">Direct Credit to Account</label>, or
 
                                     <label for="method_of_deliv_custom">Other (Give Details)</label>
-                                    <input type="text" id="method_of_deliv_custom" name="method_of_deliv[]" value="">
+                                    <input type="text" id="method_of_deliv_custom" name="method_of_deliv[custom]" value="">
 
                                 </div>
                                 <label class="error"><?php echo form_error('method_of_deliv'); ?></label>
 
                             </div>
-
                         </div>
 
 

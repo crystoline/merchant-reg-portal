@@ -1,14 +1,18 @@
 <?php $this->load->view('includes/header'); ?>
-<div class="block-header">
-	<h2>Users</h2>
-	
-</div>
+
 <div class="row">
 <div class="card">
+    <div class="header">
+        <div class="block-header">
+            <h2>Users
+            <a href="<?php print site_url('user/create') ?>" class="btn btn-primary pull-right">
+                <i></i>
+                Create User</a>
+            </h2>
+        </div>
+    </div>
     <div class="body">
-	<a href="<?php print site_url('user/create') ?>" class="btn btn-primary pull-right">
-	<i></i>
-	Create User</a>
+
 	<table class="table table-striped table-hover table-responsive datatable-user">
 		<thead>
 			<tr style="text-transform: uppercase;">

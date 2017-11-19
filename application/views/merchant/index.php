@@ -1,4 +1,6 @@
-<?php $this->load->view('includes/header'); ?>
+<?php $this->load->view('includes/header');
+$l_user = $this->session->userdata('user');
+?>
 
 <div class="row">
 <div class="card">
@@ -42,8 +44,8 @@
 				<td>
                     <a class="btn btn-sm btn-info" href="<?php print site_url('merchant/view/'.$merchant->id) ?>">View</a>
 
-                    <?php if($merchant->merchant_status == 0 and $user->user_type == 'admin'): ?>
-                        <form method="post" style="display: inline-block" onsubmit="reason.value = prompt('Enter More information', 'Nil')">
+                    <?php if($merchant->merchant_status == 0 and $l_user->user_type == 'admin'): ?>
+                        <form method="post" style="display: inline-block" onsubmit="reason.value = prompt('Enter More information', '')">
                             <input type="hidden" name="merchant_id" value="<?php print $merchant->id ?>">
                         <input type="hidden" name="reason" value="">
                             <button type="submit" class="btn btn-sm btn-success" name="merchant_change_status" value="1">Approve</button>
@@ -52,7 +54,7 @@
                     <?php endif;?>
 
 					<?php if($merchant->merchant_status == 2): ?>
-                        <a class="btn btn-sm btn-info" href="<?php print site_url('merchant/edit/'.$merchant->id) ?>">Update</a>
+                        <a class="btn btn-sm bg-blue-grey" href="<?php print site_url('merchant/edit/'.$merchant->id) ?>">Edit</a>
 					<?php endif; ?>
                 </td>
 			</tr>
