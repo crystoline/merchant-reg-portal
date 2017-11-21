@@ -10,7 +10,7 @@
                 </div>
             </div>
 			<div class="body">
-				<form action="" method="post" novalidate>
+				<form action="" method="post">
                     <fieldset>
 						<legend>SECTION 1: General Information</legend>
 
@@ -44,27 +44,28 @@
 								<div class="form-group">
 									<label for="type_of_ownership">Ownership Type</label>
 									<div class="form-line ">
-										<input class="form-control" type="text" name="type_of_ownership" id="type_of_ownership" 
-										required value="<?php echo set_value('type_of_ownership'); ?>" list="type_of_ownership_data">
-										<datalist id="type_of_ownership_data">  
-											<option>Sole Owner</option>
-											<option>Partnership/Joint</option>
-											<option>Venture Limited</option>
-											<option>Liability Company</option>
-											<option>Non-Profit Organization/NGO</option>
-											<option>Public Liability</option>
-											<option>Company Religious Organization</option>
-											<option>Government</option>
-										</datalist>
+                                        <select class="form-control" type="text" name="type_of_ownership" id="type_of_ownership"
+                                                required >
+                                            <option></option>
+                                            <option <?php echo set_select('type_of_ownership', 'Sole Owner') ?>>Sole Owner</option>
+                                            <option <?php echo set_select('type_of_ownership', 'Partnership/Joint')?>>Partnership/Joint</option>
+                                            <option <?php echo set_select('type_of_ownership', 'Venture Limited')?>>Venture Limited</option>
+                                            <option <?php echo set_select('type_of_ownership', 'Liability Company')?>>Liability Company</option>
+                                            <option <?php echo set_select('type_of_ownership', 'Non-Profit Organization/NGO')?>>Non-Profit Organization/NGO</option>
+                                            <option <?php echo set_select('type_of_ownership', 'Public Liability')?>>Public Liability</option>
+                                            <option <?php echo set_select('type_of_ownership', 'Company Religious Organization')?>>Company Religious Organization</option>
+                                            <option <?php echo set_select('type_of_ownership', 'Government')?>>Government</option>
+                                        </select>
 									</div>
 									<label class="error"><?php echo form_error('type_of_ownership'); ?></label>
 								</div>
 							</div>
 							<div class="col-sm-4">
                                 <div class="form-group">
-                                    <label for="date_reg">Date Registered</label>
+                                    <label for="date_reg">Date Registered (yyyy-mm-dd)</label>
                                     <div class="form-line ">
                                         <input class="form-control" type="text" name="date_reg" id="date_reg"
+                                               pattern="([0-9]{4})-([0-9]{2})-([0-9]{2})"
                                         required value="<?php echo set_value('date_reg'); ?>">
                                     </div>
                                     <label class="error"><?php echo form_error('date_reg'); ?></label>
@@ -74,7 +75,7 @@
                                 <div class="form-group">
                                     <label for="staff_strength">Staff Strength</label>
                                     <div class="form-line ">
-                                        <input class="form-control" type="text" name="staff_strength" id="staff_strength" required>
+                                        <input class="form-control" type="number" name="staff_strength" min="1" id="staff_strength" required>
                                     </div>
                                     <label class="error"><?php echo form_error('staff_strength'); ?></label>
                                 </div>
@@ -104,7 +105,7 @@
                             <div class="form-group">
                                 <label for="office_email">Office Email</label>
                                 <div class="form-line ">
-                                    <input class="form-control" type="text" name="office_email" id="office_email" required>
+                                    <input class="form-control" type="email" name="office_email" id="office_email" required>
                                 </div>
                                 <label class="error"><?php echo form_error('office_email'); ?></label>
                             </div>
@@ -115,7 +116,7 @@
                                 <div class="form-group">
                                     <label for="">Postal Address</label>
                                     <div class="form-line ">
-                                        <textarea class="form-control" type="text" name="postal_address" id="postal_address" required></textarea>
+                                        <textarea class="form-control" name="postal_address" id="postal_address" required></textarea>
                                     </div>
                                     <label class="error"><?php echo form_error('postal_address'); ?></label>
                                 </div>
@@ -124,7 +125,7 @@
                                 <div class="form-group">
                                     <label for="office_address">Office Address</label>
                                     <div class="form-line ">
-                                        <textarea class="form-control" type="text" name="office_address" id="office_address" required></textarea>
+                                        <textarea class="form-control" name="office_address" id="office_address" required></textarea>
                                     </div>
                                     <label class="error"><?php echo form_error('office_address'); ?></label>
                                 </div>
@@ -147,7 +148,7 @@
                                 <div class="form-group">
                                     <label for="email_of_p_cont_pers">Email of Primary Contact Person</label>
                                     <div class="form-line ">
-                                        <input class="form-control" type="text" name="email_of_p_cont_pers" id="email_of_p_cont_pers" required>
+                                        <input class="form-control" type="email" name="email_of_p_cont_pers" id="email_of_p_cont_pers" required>
                                     </div>
                                     <label class="error"><?php echo form_error('email_of_p_cont_pers'); ?></label>
                                 </div>
@@ -185,7 +186,7 @@
                                 <div class="form-group">
                                     <label for="email_of_s_cont_pers">Email of Secondary Contact Person</label>
                                     <div class="form-line ">
-                                        <input class="form-control" type="text" name="email_of_s_cont_pers" id="email_of_s_cont_pers" required>
+                                        <input class="form-control" type="email" name="email_of_s_cont_pers" id="email_of_s_cont_pers" required>
                                     </div>
                                     <label class="error"><?php echo form_error('email_of_s_cont_pers'); ?></label>
                                 </div>
@@ -228,7 +229,7 @@
                                 <div class="form-group">
                                     <label for="website_url">Website Url</label>
                                     <div class="form-line">
-                                        <input class="form-control" type="text" name="website_url" id="website_url" required>
+                                        <input class="form-control" type="url" name="website_url" id="website_url" required>
                                     </div>
                                     <label class="error"><?php echo form_error('website_url'); ?></label>
                                 </div>
@@ -293,7 +294,7 @@
                                 <div class="form-group">
                                     <label for="trans_vol_per_day">Transaction Vol./Day</label>
                                     <div class="form-line ">
-                                        <input class="form-control" type="text" name="trans_vol_per_day" id="trans_vol_per_day">
+                                        <input class="form-control" type="number" name="trans_vol_per_day" id="trans_vol_per_day">
                                     </div>
                                     <label class="error"><?php echo form_error('trans_vol_per_day'); ?></label>
                                 </div>
@@ -302,7 +303,7 @@
                                 <div class="form-group">
                                     <label for="no_of_days_for_delev">No of days until products/services is delivered:</label>
                                     <div class="form-line">
-                                        <input class="form-control" type="text" name="no_of_days_for_delev" id="no_of_days_for_delev">
+                                        <input class="form-control" type="number" name="no_of_days_for_delev" id="no_of_days_for_delev">
                                     </div>
                                     <label class="error"><?php echo form_error('no_of_days_for_delev'); ?></label>
                                 </div>

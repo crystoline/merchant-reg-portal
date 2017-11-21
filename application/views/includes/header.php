@@ -1,6 +1,6 @@
 <?php
 $login_user = $this->session->userdata('user');
-//var_dump($login_user);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,8 +55,10 @@ $login_user = $this->session->userdata('user');
 
 
     <!-- JQuery DataTable Css -->
-    <link href="<?php echo base_url()?>plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
-	
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/rowreorder/1.2.3/css/rowReorder.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.0/css/responsive.dataTables.min.css">
     <!-- Waves Effect Css -->
     <link href="<?php echo base_url()?>plugins/node-waves/waves.css" rel="stylesheet" />
 
@@ -72,10 +74,16 @@ $login_user = $this->session->userdata('user');
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="<?php echo base_url()?>css/themes/all-themes.css" rel="stylesheet" />
 </head>
-
-<body class="theme-red">
 <!-- Jquery Core Js -->
 <script src="<?php echo base_url()?>plugins/jquery/jquery.min.js"></script>
+<!-- Jquery DataTable Plugin Js -->
+
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js">
+</script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/rowreorder/1.2.3/js/dataTables.rowReorder.min.js">
+</script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.0/js/dataTables.responsive.min.js"></script>
+<body class="theme-red">
 
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
@@ -103,6 +111,7 @@ $login_user = $this->session->userdata('user');
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
+                <!--<img src="--><?php //print base_url('images/logo.png') ?><!--">-->
                 <a class="navbar-brand" href="<?php print base_url() ?>"><?php print __SITENAME__ ?></a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">

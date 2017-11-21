@@ -1,4 +1,6 @@
-<?php $this->load->view('includes/header'); ?>
+<?php $this->load->view('includes/header');
+$l_user = $this->session->userdata('user');
+?>
 <script>
     window.onload = function () {
        $(".disabled_field input, disabled_field select, disabled_field textarea").prop({
@@ -15,7 +17,7 @@
             <div class="header">
                 <div class="block-header">
                     <h2>Merchant Information
-	                    <?php if($merchant->merchant_status == 2): ?>
+	                    <?php if($merchant->merchant_status == 2 and ($l_user->user_type != 'admin')): ?>
                             <a class="btn btn-sm btn-info pull-right" href="<?php print site_url('merchant/edit/'.$merchant->id) ?>">Edit</a>
 	                    <?php endif; ?>
                     </h2>

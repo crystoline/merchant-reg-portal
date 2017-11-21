@@ -33,7 +33,7 @@
 				Approved by : <?php print @$merchant->approved_by ?>
 			</div>
 			<div class="body">
-				<form action="" method="post" novalidate >
+				<form action="" method="post" >
 
 					<?php $this->load->view('merchant/form') ?>
 					<button class="btn btn-success">Update</button>
