@@ -1,3 +1,4 @@
+
 <fieldset class="disabled_field">
 	<legend>SECTION 1: General Information</legend>
 
@@ -408,7 +409,7 @@
 <fieldset class="disabled_field">
 	<legend>SECTION 5 OTHER INFORMATION</legend>
 	<div class="row">
-		<div class="col-sm-6">
+		<div class="col-sm-12">
 			<div class="form-group">
 				<label for="additional_information">Additional Information</label>
 				<div class="form-line ">
@@ -418,15 +419,80 @@
 			</div>
 
 		</div>
-        <div class="col-sm-6">
+       <!-- <div class="col-sm-6">
             <div class="form-group demo-tagsinput-area">
                 <label for="additional_information">Documents Received (Enter Multiple)</label>
                 <div class="form-line">
-                    <input type="text" class="form-control" data-role="tagsinput" name="documents" value="<?php echo $merchant->documents ?>">
+                    <input type="text" class="form-control" data-role="tagsinput" name="documents" value="<?php /*echo $merchant->documents */?>">
                 </div>
             </div>
-            <label class="error"><?php echo form_error('additional_information'); ?></label>
+            <label class="error"><?php /*echo form_error('additional_information'); */?></label>
         </div>
-	</div>
+	</div>-->
 
 </fieldset>
+<fieldset>
+    <legend>SECTION 6: Documents</legend>
+    <div id="docs">
+        <?php
+        $documents = unserialize($merchant->documents);
+
+        $files = scandir('./merchants/documents/'.$merchant->id);
+        $attachment = array();
+        foreach ($files as $i => $file):
+            if($file == '..' or $file == '.') continue;
+            $sn = substr($file, 0, strpos($file,'.'));
+	        if(array_key_exists($sn, $documents))$attachment[$sn] = $file;
+        endforeach;
+
+
+        foreach ($documents as $i => $document):?>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Document Name</label>
+                    <div class="form-line">
+                        <input type="text" class="form-control" name="documents[<?php print $i?>]" value="<?php print $document ?>" required>
+                    </div>
+                    <?php
+                        print (isset($attachment[$i]))? '<a href="'.base_url('merchants/documents/'.$merchant->id.'/'.$attachment[$i]).'" >Download</a>': 'No attachment fount'
+                    ?>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Attach File</label>
+                    <div class="form-line">
+                        <input type="file" class="form-control" name="doc[<?php print $i?>]" value="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endforeach; ?>
+    <button type="button" class="btn bg-amber  pull-right" onclick="add_more()">Add more</button>
+</fieldset>
+<script>
+    function add_more() {
+        $('#docs').append('' +
+            '<div class="row">\n' +
+            '<div class="col-sm-6">\n' +
+            '<div class="form-group">\n' +
+            '<label>Document Name</label>\n' +
+            '<div class="form-line">\n' +
+            '<input type="text" class="form-control" name="documents[]" value="" required>\n' +
+            '</div>\n' +
+            '</div>\n' +
+            '</div>\n' +
+            '<div class="col-sm-6">\n' +
+            '<div class="form-group">\n' +
+            '<label>Attach File</label>\n' +
+            '<div class="form-line">\n' +
+            '<input type="file" class="form-control" name="doc[]" value="" required>\n' +
+            '</div>\n' +
+            '</div>\n' +
+            '</div>\n' +
+            '</div>'
+        )
+    }
+</script>

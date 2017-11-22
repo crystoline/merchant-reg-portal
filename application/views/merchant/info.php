@@ -1,5 +1,25 @@
 <div class="row">
-	<div class="col-md-4">
+    <div class="col-md-3">
+        <?php
+            if(is_file('merchants/passport/'.$merchant->id.'.jpg')){
+                $passport = base_url('merchants/passport/'.$merchant->id.'.jpg');
+            }else{
+	            $passport = base_url('images/default.png');
+            }
+        ?>
+        <img src="<?php  print $passport ?>" height="150px">
+
+        <fieldset class="disabled_field">
+            <div class="form-group">
+                <label for="passport">Change Passport</label>
+                    <input class="form-control" type="file" name="passport" id="passport"
+                           required>
+                   <em>Note: Max. size = 300 by. Max. Dimension 768px by1024px</em>
+                </div>
+                <label class="error"><?php echo form_error('passport'); ?></label>
+        </fieldset>
+    </div>
+	<div class="col-md-3">
 		Status: <?php
 		switch($merchant->merchant_status){
 			case 0:
@@ -14,11 +34,11 @@
 		}
 		?>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 		Created by : <?php print @$merchant->register_by ?><br>
 		Date: <?php print @$merchant->date_of_reg ?>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 		<?php if($merchant->merchant_status == 1): ?>
 			Approved by : <?php print @$merchant->approved_by ?><br>
 			Date: <?php print @$merchant->date_validated ?>

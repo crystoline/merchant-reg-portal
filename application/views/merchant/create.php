@@ -10,12 +10,12 @@
                 </div>
             </div>
 			<div class="body">
-				<form action="" method="post">
+				<form action="" method="post"  enctype="multipart/form-data">
                     <fieldset>
 						<legend>SECTION 1: General Information</legend>
 
 						<div class="row">
-							<div class="col-sm-8">
+							<div class="col-sm-4">
 								<div class="form-group">
 									<label for="company_name">Company Name</label>
 									<div class="form-line ">
@@ -25,6 +25,17 @@
 									<label class="error"><?php echo form_error('company_name'); ?></label>
 								</div>
 							</div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="passport">Passport</label>
+
+                                        <input class="form-control" type="file" name="passport" id="passport"
+                                               required>
+
+                                    <em>Note: Max. size = 300 by. Max. Dimension 768px by1024px</em>
+                                    <label class="error"><?php echo form_error('passport'); ?></label>
+                                </div>
+                            </div>
 							<div class="col-sm-4">
 								<div class="form-group">
 									<label for="rc_no">RC Number</label>
@@ -402,7 +413,7 @@
 					<fieldset>
 						<legend>SECTION 5 OTHER INFORMATION</legend>
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="additional_information">Additional Information</label>
                                     <div class="form-line ">
@@ -411,25 +422,70 @@
                                     <label class="error"><?php echo form_error('additional_information'); ?></label>
                                 </div>
                             </div>
+                        </div>
+
+                    </fieldset>
+					<fieldset>
+                        <legend>SECTION 6: Documents</legend>
+                        <div id="docs">
+                            <div class="row">
                             <div class="col-sm-6">
-                                <div class="form-group demo-tagsinput-area">
-                                    <label for="additional_information">Documents Received (Enter Multiple)</label>
+                                <div class="form-group">
+                                    <label>Document Name</label>
                                     <div class="form-line">
-                                        <input type="text" class="form-control" data-role="tagsinput" name="documents" value="">
+                                        <input type="text" class="form-control" name="documents[]" value="" required>
                                     </div>
+
+                                    <label class="error"><?php echo form_error('documents[]'); ?></label>
                                 </div>
-                                <label class="error"><?php echo form_error('additional_information'); ?></label>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Attach File</label>
+                                    <div class="form-line">
+                                        <input type="file" class="form-control" name="doc[]" value="" required>
+                                    </div>
+                                    <label class="error"><?php echo form_error('doc[]'); ?></label>
+                                </div>
                             </div>
                         </div>
+                        </div>
+                        <button type="button" class="btn bg-amber  pull-right" onclick="add_more()">Add more</button>
                     </fieldset>
-					
-				
-					<button class="btn btn-success">Save</button>
+                    <div class="clearfix">
+                        <button class="btn btn-success btn-lg">Save</button>
+                    </div>
+
 				</form>
 			</div>
 		</div>
-		
-	</div>
 
+
+
+	</div>
+    <script>
+        function add_more() {
+            $('#docs').append('' +
+                '<div class="row">\n' +
+                '<div class="col-sm-6">\n' +
+                '<div class="form-group">\n' +
+                '<label>Document Name</label>\n' +
+                '<div class="form-line">\n' +
+                '<input type="text" class="form-control" name="documents[]" value="" required>\n' +
+                '</div>\n' +
+                '</div>\n' +
+                '</div>\n' +
+                '<div class="col-sm-6">\n' +
+                '<div class="form-group">\n' +
+                '<label>Attach File</label>\n' +
+                '<div class="form-line">\n' +
+                '<input type="file" class="form-control" name="doc[]" value="" required>\n' +
+                '</div>\n' +
+                '</div>\n' +
+                '</div>\n' +
+                '</div>'
+            )
+        }
+    </script>
 </div>
 <?php $this->load->view('includes/footer'); ?>

@@ -3,7 +3,7 @@ $l_user = $this->session->userdata('user');
 ?>
 <script>
     window.onload = function () {
-       $(".disabled_field input, disabled_field select, disabled_field textarea").prop({
+       $(".disabled_field input, disabled_field select, disabled_field textarea, disabled_field button").prop({
            "readonly": true,
            'disabled': true
        })

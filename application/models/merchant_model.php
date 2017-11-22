@@ -36,9 +36,11 @@ class Merchant_Model extends CI_Model
 		@$data['date_of_reg'] = date('Y-m-d h:i:s');
 		@$data['merchant_status'] = '0';
 		@$data['method_of_deliv'] = serialize($data['method_of_deliv']);
+		@$data['documents'] = serialize($data['documents']);
 		@$data['if_cust_pre_reg'] = serialize($data['if_cust_pre_reg']);
 		@$data['user_id'] = $user->id;
-		return $this->db->insert('merchants', $data);
+		$result = $this->db->insert('merchants', $data)? $this->db->insert_id(): false;
+		return $result;
 	}
 	public function update($id, $data)
 	{
@@ -46,6 +48,7 @@ class Merchant_Model extends CI_Model
 		@$data['date_of_reg'] = date('Y-m-d h:i:s');
 		@$data['merchant_status'] = '0';
 		@$data['method_of_deliv'] = serialize($data['method_of_deliv']);
+		@$data['documents'] = serialize($data['documents']);
 		@$data['if_cust_pre_reg'] = serialize($data['if_cust_pre_reg']);
 		@$data['user_id'] = $user->id;
 
