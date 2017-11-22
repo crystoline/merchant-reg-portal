@@ -13,15 +13,17 @@ class User_Model extends CI_Model{
 
 	public function create($data){
 		@$data['password'] = sha1($data['password']);
+		$data['status']     = '1';
 		@$data['date_registered'] = date('Y-m-d h:i:s');
 		return $this->db->insert('users', $data);
 	}
 
-	public function validate_user( $email, $password ) {
+	public function validate_user( $email, $password , $login = true) {
 		// Build a query to retrieve the user's details
 		// based on the received username and password
 		$this->db->from('users');
 		$this->db->where('email', $email );
+		$this->db->where('status', '1');
 		$this->db->where( 'password', sha1($password) );
 		$login = $this->db->get()->result();
 		
@@ -30,11 +32,23 @@ class User_Model extends CI_Model{
 		if ( is_array($login) && count($login) == 1 ) {
 
 			$details = $login[0];
-			$this->session->set_userdata(array('user' => $details, 'isLoggedIn' => true));
-			return true;
+			if($login){
+				$this->session->set_userdata(array('user' => $details, 'isLoggedIn' => true));
+			}
+			return $details;
 		}
 
 		return false;
+	}
+
+	public function change_password($id, $password){
+		$this->db->where('id', $id);
+		return $this->db->update('users', array('password' => sha1($password)));
+	}
+	public function change_status($id, $status = 1)
+	{
+		$this->db->where('id', $id);
+		return $this->db->update('users', array('status' => "{$status}"));
 	}
 
 	

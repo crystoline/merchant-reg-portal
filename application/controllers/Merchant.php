@@ -19,7 +19,7 @@ class Merchant extends CI_Controller {
 			$merchant_id = $_POST['merchant_id'];
 
 			if($result = $this->merchant_model->change_status($merchant_id, $merchant_change_status, $reason )){
-				$this->session->set_flashdata( 'notification', 'Merchant status was update' );
+				$this->session->set_flashdata( 'notification', 'Merchant status was updated' );
 			}
 		}
 		if(@$_POST['terminal_id'] and @$_POST['merchant_id']){
