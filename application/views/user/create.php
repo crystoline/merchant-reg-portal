@@ -34,7 +34,7 @@
 					<div class="form-group">
 						<label for="password">Password</label>
 						<div class="form-line">			
-							<input class="form-control" type="text" name="password" id="password" placeholder="Enter password" required>
+							<input class="form-control" type="password" name="password" id="password" placeholder="Enter password" required>
 						</div>
 						<label class="error"><?php echo form_error('password'); ?></label>
 					</div>
@@ -45,6 +45,8 @@
 							<label for="user_type_user">Inputer</label>
 							<input type="radio" id="user_type_admin" name="user_type" value="admin" require />
 							<label for="user_type_admin">Administrator</label>
+							<input type="radio" id="user_type_validator" name="user_type" value="Validator" require />
+							<label for="user_type_validator">Validator</label>
 						</div>
 						<label class="error"><?php echo form_error('account_type'); ?></label>
 

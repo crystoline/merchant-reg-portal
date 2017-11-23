@@ -7,8 +7,8 @@ $l_user = $this->session->userdata('user');
         <div class="header">
             <div class="block-header">
                 <h2>Merchants
-                    <?php if($l_user->user_type != 'admin'): ?>
-                    <a href="<?php print site_url('merchant/create') ?>" class="btn btn-primary pull-right">Create User</a></h2>
+                    <?php if($l_user->user_type != 'admin' and $l_user->user_type != 'Validator' ): ?>
+                    <a href="<?php print site_url('merchant/create') ?>" class="btn btn-primary pull-right">Create Merchant</a></h2>
                     <?php endif; ?>
             </div>
         </div>
@@ -22,7 +22,7 @@ $l_user = $this->session->userdata('user');
                         <th>S/N</th>
                         <th>Mercahant Name</th>
                         <th>Mercahant Code</th>
-                        <th>Date Register</th>
+                        <th>Date Registered</th>
                         <th>Register By</th>
                         <th>status</th>
                         <th>Action</th>
@@ -47,7 +47,7 @@ $l_user = $this->session->userdata('user');
                             <td>
                                 <a class="btn btn-sm btn-info" href="<?php print site_url('merchant/view/'.$merchant->id) ?>">View</a>
 
-                                <?php if($merchant->merchant_status == 0 and $l_user->user_type == 'admin'): ?>
+                                <?php if($merchant->merchant_status == 0 and $l_user->user_type == 'Validator'): ?>
                                     <form method="post" style="display: inline-block" onsubmit="reason.value = prompt('Enter More information', '')">
                                         <input type="hidden" name="merchant_id" value="<?php print $merchant->id ?>">
                                         <input type="hidden" name="reason" value="">
@@ -56,7 +56,7 @@ $l_user = $this->session->userdata('user');
                                     </form>
                                 <?php endif;?>
 
-                                <?php if($merchant->merchant_status == 2): ?>
+                                <?php if($merchant->merchant_status == 2 and $l_user->user_type != 'admin' and $l_user->user_type != 'Validator'): ?>
                                     <a class="btn btn-sm bg-blue-grey" href="<?php print site_url('merchant/edit/'.$merchant->id) ?>">Edit</a>
                                 <?php endif; ?>
                             </td>

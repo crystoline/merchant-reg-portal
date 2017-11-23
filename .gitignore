@@ -36,3 +36,5 @@ pages
 user_guide
 merchants/documents
 merchants/passport
+application2
+application/views/merchant/showform.php

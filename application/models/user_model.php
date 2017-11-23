@@ -45,6 +45,7 @@ class User_Model extends CI_Model{
 		$this->db->where('id', $id);
 		return $this->db->update('users', array('password' => sha1($password)));
 	}
+
 	public function change_status($id, $status = 1)
 	{
 		$this->db->where('id', $id);

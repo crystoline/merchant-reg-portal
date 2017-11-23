@@ -119,7 +119,8 @@ MAIL;
 				redirect('/main');
 			} else {
 				// Otherwise show the login screen with an error message.
-				$this->load->view('login');	
+				$this->load->view('login');
+				echo "<script>alert('Invalid Login Details')</script>";
 			}
 		}else{
 			$this->load->view('login');			

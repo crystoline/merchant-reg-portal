@@ -9,6 +9,8 @@
 				<div class="form-line ">
 					<input class="form-control" type="text" name="company_name" id="company_name"
 					       required value="<?php echo $merchant->company_name ?>">
+                    <input class="form-control" type="hidden" name="company_name"
+                           value="<?php echo $merchant->company_name ?>">
 				</div>
 				<label class="error"><?php echo form_error('company_name'); ?></label>
 			</div>
@@ -19,6 +21,8 @@
 				<div class="form-line ">
 					<input class="form-control" type="text" name="rc_no" id="rc_no"
 					       required value="<?php echo $merchant->rc_no ?>" >
+                    <input class="form-control" type="hidden" name="rc_no"
+                           value="<?php echo $merchant->rc_no ?>" >
 
 				</div>
 				<label class="error"><?php echo form_error('rc_no'); ?></label>
@@ -455,7 +459,7 @@
                         <input type="text" class="form-control" name="documents[<?php print $i?>]" value="<?php print $document ?>" required>
                     </div>
                     <?php
-                        print (isset($attachment[$i]))? '<a href="'.base_url('merchants/documents/'.$merchant->id.'/'.$attachment[$i]).'" >Download</a>': 'No attachment fount'
+                        print (isset($attachment[$i]))? '<a href="'.base_url('merchants/documents/'.$merchant->id.'/'.$attachment[$i]).'" >Download</a>': 'No attachment found'
                     ?>
                 </div>
             </div>

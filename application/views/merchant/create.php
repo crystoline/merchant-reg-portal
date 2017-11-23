@@ -188,7 +188,7 @@
                                 <div class="form-group">
                                     <label for="name_of_s_cont_pers">Name of Secondary Contact Person</label>
                                     <div class="form-line ">
-                                        <input class="form-control" type="text" name="name_of_s_cont_pers" id="name_of_s_cont_pers" required>
+                                        <input class="form-control" type="text" name="name_of_s_cont_pers" id="name_of_s_cont_pers" >
                                     </div>
                                     <label class="error"><?php echo form_error('name_of_s_cont_pers'); ?></label>
                                 </div>
@@ -197,7 +197,7 @@
                                 <div class="form-group">
                                     <label for="email_of_s_cont_pers">Email of Secondary Contact Person</label>
                                     <div class="form-line ">
-                                        <input class="form-control" type="email" name="email_of_s_cont_pers" id="email_of_s_cont_pers" required>
+                                        <input class="form-control" type="email" name="email_of_s_cont_pers" id="email_of_s_cont_pers" >
                                     </div>
                                     <label class="error"><?php echo form_error('email_of_s_cont_pers'); ?></label>
                                 </div>
@@ -206,7 +206,7 @@
                                 <div class="form-group">
                                     <label for="des_of_s_cont_pers">Secondary Contact Person's Designation</label>
                                     <div class="form-line ">
-                                        <input class="form-control" type="text" name="des_of_s_cont_pers" id="des_of_s_cont_pers" required>
+                                        <input class="form-control" type="text" name="des_of_s_cont_pers" id="des_of_s_cont_pers" >
                                     </div>
                                     <label class="error"><?php echo form_error('des_of_s_cont_pers'); ?></label>
                                 </div>
@@ -240,7 +240,7 @@
                                 <div class="form-group">
                                     <label for="website_url">Website Url</label>
                                     <div class="form-line">
-                                        <input class="form-control" type="url" name="website_url" id="website_url" required>
+                                        <input class="form-control" placeholder = "http://www.google.com" type="url" name="website_url" id="website_url" required>
                                     </div>
                                     <label class="error"><?php echo form_error('website_url'); ?></label>
                                 </div>

@@ -7,7 +7,15 @@ $l_user = $this->session->userdata('user');
            "readonly": true,
            'disabled': true
        })
-        $("div.form-inline").removeClass('focused')
+       $('button').prop({
+           "readonly": true,
+           'disabled': true
+       });
+
+	   $('textarea').attr('readonly','readonly');
+	   $('textarea').prop('disabled', true);
+        $("div.form-inline").removeClass('focused');
+
     };
 </script>
 
@@ -17,7 +25,7 @@ $l_user = $this->session->userdata('user');
             <div class="header">
                 <div class="block-header">
                     <h2>Merchant Information
-	                    <?php if($merchant->merchant_status == 2 and ($l_user->user_type != 'admin')): ?>
+	                    <?php if($merchant->merchant_status == 2 and ($l_user->user_type != 'admin') and ($l_user->user_type != 'Validator')): ?>
                             <a class="btn btn-sm btn-info pull-right" href="<?php print site_url('merchant/edit/'.$merchant->id) ?>">Edit</a>
 	                    <?php endif; ?>
                     </h2>
@@ -40,3 +48,5 @@ $l_user = $this->session->userdata('user');
 
 </div>
 <?php $this->load->view('includes/footer'); ?>
+
+

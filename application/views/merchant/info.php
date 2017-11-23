@@ -7,7 +7,7 @@
 	            $passport = base_url('images/default.png');
             }
         ?>
-        <img src="<?php  print $passport ?>" height="150px">
+        <img src="<?php  print $passport ?>" style="width 100%; max-width:200px">
 
         <fieldset class="disabled_field">
             <div class="form-group">
@@ -28,7 +28,8 @@
 			case 2: print '<label class="label label-danger">Rejected</label>';
 				print '<br>';
 				if($merchant->reason)
-					print 'Reason: <em class="text text-warning">'.$merchant->reason.'</em>';
+					print 'Reason: <em class="text text-warning">'.$merchant->reason.'</em><br>';
+
 
 				break;
 		}
@@ -43,6 +44,13 @@
 			Approved by : <?php print @$merchant->approved_by ?><br>
 			Date: <?php print @$merchant->date_validated ?>
 		<?php endif; ?>
+
+		<?php if($merchant->merchant_status == 2): ?>
+			Rejected by : <?php print @$merchant->approved_by ?><br>
+			Date: <?php print @$merchant->date_validated ?>
+		<?php endif; ?>
+
+
 	</div>
 </div>
 <?php
@@ -51,6 +59,9 @@
 <div class="row">
     <div class="col-md-6">
         <span><em>Terminal ID:</em> <span class="label bg-purple"><?php print $merchant->terminal_id? :'None' ?></span> </span>
+    </div>
+	<div class="col-md-6">
+        <span><big><em>Biller Code:</em> <span class="label bg-purple"><?php print $merchant->merchant_code? :'None' ?></span></big> </span>
     </div>
     <div class="col-md-6">
         <div class="pull-right">

@@ -50,7 +50,8 @@ class Merchant extends CI_Controller {
 	public function create(){
 		if($_POST) {
 			//var_dump($_POST); die();
-			$this->form_validation->set_rules( 'company_name', 'Company Name', 'trim|required' );
+			//$this->form_validation->set_rules( 'company_name', 'Company Name', 'trim|required' );
+			$this->form_validation->set_rules('rc_no', 'RC Number', 'callback_rc_no_check');
 
 			if ( $this->form_validation->run() !== false ) {
 				$result_id = $this->merchant_model->create( $_POST );
@@ -67,17 +68,30 @@ class Merchant extends CI_Controller {
 		$data['banks'] = $this->bank_model->all();
 		$this->load->view('merchant/create', $data);
 	}
+	public function rc_no_check($value)
+	{
+		@$merchant_name = $_POST['company_name'];
+		if ($value and  $this->merchant_model->unique_merchant($merchant_name, $value))
+		{
+			$this->form_validation->set_message('rc_no_check', 'The company name and RC Number must be unique');
+			return FALSE;
+		}
+
+			return true;
+
+	}
 	public function upload_passport($merchant_id)
 	{
 		$config['file_name']            = $merchant_id.'.jpg';
 		$config['upload_path']          = './merchants/passport/';
 
-		$config['allowed_types']        = 'gif|jpg|png';
+		$config['allowed_types']        = 'gif|jpg|png|JPG|JPEG|PNG';
 		$config['max_size']             = 300;
 		$config['max_width']            = 1024;
 		$config['max_height']           = 768;
+		$config['overwrite']     = true;
 
-		$this->load->library('upload', $config);
+		//$this->load->library('upload', $config);
 		$this->upload->initialize($config);
 		if ( $this->upload->do_upload('passport')){
 
@@ -89,11 +103,11 @@ class Merchant extends CI_Controller {
 	}
 	public function upload_documents($merchant_id){
 		if (!is_dir('./merchants/documents/'.$merchant_id)){
-			mkdir('./merchants/documents/'.$merchant_id);
+			mkdir('./merchants/documents/'.$merchant_id, 0777, true);
 		}
 		$config = array();
 		$config['upload_path'] = './merchants/documents/'.$merchant_id;
-		$config['allowed_types'] = 'pdf|doc|docx';
+		$config['allowed_types'] = 'pdf|doc|docx|jpg|jpeg';
 		$config['max_size']      = '0';
 		$config['overwrite']     = true;
 		//$this->load->library('upload');
@@ -108,18 +122,18 @@ class Merchant extends CI_Controller {
 			$_FILES['userfile']['tmp_name'] = $files['doc']['tmp_name'][$i];
 			$_FILES['userfile']['error']    = $files['doc']['error'][$i];
 			$_FILES['userfile']['size']     = $files['doc']['size'][$i];
-			$config['file_name']            = "{$i}".substr();
+			$config['file_name']            = "{$i}";
 			$this->upload->initialize($config);
 
 			if(!$this->upload->do_upload()){
-				print $_FILES['userfile']['type'] ;
-				print_r(   $error = array('error' => $this->upload->display_errors())); die();
+				//print $_FILES['userfile']['type'] ;
+				//print_r(   $error = array('error' => $this->upload->display_errors())); die();
 			};
 		}
 	}
 
 	public function edit($id){
-		$data['merchant'] = $this->merchant_model->get($id);
+		$data['merchant'] = $this->merchant_model->get($id, 2); // edit only rejected
 		if(empty($data['merchant'])) {
 			redirect('merchant');
 			die();
@@ -128,6 +142,11 @@ class Merchant extends CI_Controller {
 			//var_dump($_POST); die();
 			$this->upload_passport($id);
 			$this->form_validation->set_rules( 'company_name', 'Company Name', 'trim|required' );
+
+			if( @$_POST['company_name'] and $_POST['company_name'] != $_POST['old_company_name']
+			   or ( @$_POST['rc_no'] and $_POST['rc_no'] != $_POST['old_rc_no']) ){
+				$this->form_validation->set_rules('rc_no', 'RC Number', 'callback_rc_no_check');
+			}
 
 			if ( $this->form_validation->run() !== false ) {
 				$result = $this->merchant_model->update($id, $_POST );
@@ -140,9 +159,12 @@ class Merchant extends CI_Controller {
 
 			}
 		}
+
 		$data['banks'] = $this->bank_model->all();
 		$this->load->view('merchant/edit', $data);
+
 	}
+
 	public function view($id){
 		$data['banks'] = $this->bank_model->all();
 		$data['merchant'] = $this->merchant_model->get($id);
